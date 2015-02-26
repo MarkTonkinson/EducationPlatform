@@ -4,7 +4,9 @@
 	<title>Education Central</title>
 </head>
 <body>
+
 <div ng-controller="mainCtrl">
+	<edu-profile userprofile='{{user}}'></edu-profile>
 	{{test}}
 	<p>{{play}}</p>
 </div>
@@ -24,4 +26,5 @@
 <script src="anotherCtrl.js"></script>
 <script src="services/testService.js"></script>
 <script src="components/teacherlinks/teacherLinksDirective.js"></script>
+<script src="components/profile/profileDirective.js"></script>
 </body>
