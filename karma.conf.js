@@ -17,12 +17,12 @@ module.exports = function(config) {
     files: [
     'bower_components/angular/angular.min.js',
     'bower_components/angular-mocks/angular-mocks.js',
-    'app.js',
-    'mainCtrl.js',
-    'anotherCtrl.js',
-    'services/testService.js',
-    'test/mainCtrlTest.js',
-    'test/anotherCtrlTest.js'
+    'src/app.js',
+    'src/mainCtrl.js',
+    'src/anotherCtrl.js',
+    'src/services/testService.js',
+    'specs/test/mainCtrlTest.js',
+    'specs/test/anotherCtrlTest.js'
     ],
 
 

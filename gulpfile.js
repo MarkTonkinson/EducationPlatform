@@ -1,5 +1,7 @@
 var gulp = require('gulp');
-var karma = require('gulp-karma')
+var karma = require('gulp-karma');
+var ngAnnotate = require('gulp-ng-annotate')
+var uglify = require('gulp-uglify')
 //Can give the test files here, or just allow it to run the default files.
 var testFiles = [
     // 'bower_components/angular/angular.min.js',
@@ -11,6 +13,13 @@ var testFiles = [
     // 'test/mainCtrlTest.js',
     // 'test/anotherCtrlTest.js'
 ]
+
+gulp.task('annotate', function () {
+    return gulp.src('app.js')
+        .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
+});
 
 gulp.task('test', function() {
   // Be sure to return the stream 
