@@ -4,7 +4,8 @@ angular.module('EducationPlatform')
 	$scope.play = testService
 	$scope.user = {
 		name: 'Mark',
-		role: 'Teacher'
+		role: 'Teacher',
+		profilePic: 'profile.jpg'
 	}
 	
 })
