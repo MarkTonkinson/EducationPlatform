@@ -20,6 +20,7 @@ module.exports = function(config) {
     'app.js',
     'mainCtrl.js',
     'anotherCtrl.js',
+    'services/testService.js',
     'test/mainCtrlTest.js',
     'test/anotherCtrlTest.js'
     ],
