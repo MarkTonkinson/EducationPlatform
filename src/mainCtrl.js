@@ -5,7 +5,7 @@ angular.module('EducationPlatform')
 	$scope.user = {
 		name: 'Mark',
 		role: 'Teacher',
-		profilePic: 'profile.jpg'
+		profilePic: 'resources/profile.jpg'
 	}
 	
 })
