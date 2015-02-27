@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var karma = require('gulp-karma');
 var ngAnnotate = require('gulp-ng-annotate')
 var uglify = require('gulp-uglify')
+var del = require('del')
+var concat = require('gulp-concat')
 //Can give the test files here, or just allow it to run the default files.
 var testFiles = [
     // 'bower_components/angular/angular.min.js',
@@ -14,8 +16,14 @@ var testFiles = [
     // 'test/anotherCtrlTest.js'
 ]
 
+gulp.task('wipeDist', function(){
+  del(['dist/**'])
+})
+
 gulp.task('annotate', function () {
-    return gulp.src('app.js')
+    
+    return gulp.src(['src/app/app.js', 'src/*.js','src/**/*.js'])
+        .pipe(concat('app.js'))
         .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(gulp.dest('dist'));
