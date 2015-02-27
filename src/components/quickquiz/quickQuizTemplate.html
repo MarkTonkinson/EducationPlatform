@@ -1,0 +1,22 @@
+<div style="background-color:#ccc; width:20%; min-height:8rem;; border: 1px solid blue; margin:1rem; padding:1rem;">
+	Number of Questions: <input type='number' max='8' min='0' ng-model="numQuestionsWanted" ng-change="updateQuestions()">
+	<br>
+	Quiz Title: <input ng-model='quiz.title'>
+	<form>
+		<div ng-repeat="number in numQuestions track by $index">
+			{{number}}: <input placeholder="Question" ng-model="question" ng-change="createQuestions($index, question)">
+		</div>
+		<button style="margin:1rem;" ng-show="numQuestionsWanted >=1" ng-click="createQuiz()">Create Quiz</button>
+	</form> 
+</div>
+
+<!-- so ideally this creates a quiz that all students can take
+and then allows the teacher to see the results submitted to a form.
+Could you offer input for the teacher to create possible answers
+and then check them with a regex? or does the teacher have to still check them all manually? Or should there be an option for answers, the student checks their own answer, puts their score and it is submitted with everything else?  That would be good, because the teacher could see if a student scored themselves wrong, but you could also use a checkmark as a flag that the student wasn't sure about their answer.  That flag would then highlight answers from students that they were unsure about -->
+
+<!-- speaking to other directives:
+there shoudld be an active assignments directive
+that has a method that can accept the quiz into it's array
+
+ -->

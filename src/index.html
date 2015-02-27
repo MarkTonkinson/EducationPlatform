@@ -5,6 +5,9 @@
 </head>
 <body>
 
+<quick-quiz></quick-quiz>
+
+
 <div ng-controller="mainCtrl">
 	<edu-profile userprofile='{{user}}'></edu-profile>
 	{{test}}
@@ -20,6 +23,7 @@
 
 
 
+
 <div ng-controller="anotherCtrl">
 	{{test}}
 	<p>{{hi}}</p>
@@ -30,7 +34,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
 <!-- build:js -->
-<script src="app.js"></script>
+<script src="app/app.js"></script>
 <script src="mainCtrl.js"></script>
 <script src="anotherCtrl.js"></script>
 <script src="services/testService.js"></script>
@@ -39,7 +43,7 @@
 <script src="components/profile/profileDirective.js"></script>
 <script src="components/textanalysis/textAnalysisDirective.js"></script>
 <script src="components/studentchecklist/studentChecklistDirective.js"></script>
-
+<script src="components/quickquiz/quickQuizDirective.js"></script>
 <!-- endbuild -->
 
 </body>
