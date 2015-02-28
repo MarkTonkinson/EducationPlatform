@@ -1,6 +1,6 @@
 <div style="border:1px solid black; margin:1rem; padding:1rem; background-color:#ccc;">
 	<h2>Quick Links</h2>
-	<input style="width:40%; padding:.5rem;" ng-model="newLink" placeholder="Add a new link"/>
+	<input style="padding:.5rem;" ng-model="newLink" placeholder="Add a new link"/>
 	<button ng-click="list.push(newLink)">Add Link</button>
 	<div ng-repeat="link in list track by $index">
 		<p><button ng-click="list.splice($index,1)">Remove</button><a href="{{link}}">{{link}}</a><p>

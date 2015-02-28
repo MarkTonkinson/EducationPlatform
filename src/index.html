@@ -2,35 +2,61 @@
 <html ng-app="EducationPlatform">
 <head>
 	<title>Education Central</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 </head>
+
+
 <body>
 
-<quick-quiz></quick-quiz>
 
 
-<div ng-controller="mainCtrl">
-	<edu-profile userprofile='{{user}}'></edu-profile>
-	{{test}}
-	<p>{{play}}</p>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<quick-quiz></quick-quiz>
+			
+			<quick-notes></quick-notes>
+		</div>
+
+		<div ng-controller="mainCtrl" class="col-md-6">
+			
+			{{test}}
+			<p>{{play}}</p>
+
+			<div id="columns">
+			  <div class='column' draggable='true'>
+			  	<edu-profile userprofile='{{user}}'></edu-profile>
+			  </div>
+			  
+			  <div class='column' draggable='true'>
+			  	<quick-notes></quick-notes>
+			  </div>
+			  <div class="column" draggable="true"><header>A</header></div>
+			  <div class="column" draggable="true"><header>B</header></div>
+			  <div class="column" draggable="true"><header>C</header></div>
+			</div>
+
+		</div>
+
+		<div class="col-md-4" teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"><p>Help!</p></div>
+
+		<student-checklist class="col-md-4"></student-checklist>
+		<text-analysis class="col-md-4">
+			<div><h1>Eat More Chicken!!</h1><div>
+		</text-analysis>
+
+
+
+
+		<div ng-controller="anotherCtrl">
+			{{test}}
+			<p>{{hi}}</p>
+			<button ng-click="run()">Run</button>
+
+		</div>
+	</div>
 </div>
-
-<div teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"><p>Help!</p></div>
-
-<student-checklist></student-checklist>
-<text-analysis>
-	<div><h1>Eat More Chicken!!</h1><div>
-</text-analysis>
-
-
-
-
-<div ng-controller="anotherCtrl">
-	{{test}}
-	<p>{{hi}}</p>
-	<button ng-click="run()">Run</button>
-
-</div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
 <!-- build:js -->
@@ -44,6 +70,8 @@
 <script src="components/textanalysis/textAnalysisDirective.js"></script>
 <script src="components/studentchecklist/studentChecklistDirective.js"></script>
 <script src="components/quickquiz/quickQuizDirective.js"></script>
+<script src="components/quicknotes/quickNotesDirective.js"></script>
+
 <!-- endbuild -->
 
 </body>
