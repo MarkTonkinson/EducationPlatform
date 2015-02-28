@@ -1,6 +1,7 @@
 angular.module('EducationPlatform')
 .directive('eduDraggable', function(){
 	return function(scope, element){
+		console.log("scope ", scope)
 		var el = element[0];
 		el.draggable = true;
 
@@ -9,24 +10,24 @@ angular.module('EducationPlatform')
 		var handleDragStart = function(e){
 			//console.log('e', e)
 			drgSrcEl = this;
-			//console.log("dragSrc ", drgSrcEl)
+			console.log("dragSrc ", drgSrcEl)
 			e.dataTransfer.effectAllowed = 'move'
-			e.dataTransfer.setData('text/html', this.innerHTML)
-			return false
+			e.dataTransfer.setData('text/html', this.outerHTML)
+			
 		}
 		
 		var handleDragEnd = function(e){
 			if(e.preventDefault){
 				e.preventDefault();
 			}
-			e.dataTransfer.dropEffect = 'move'
+			
 		}
 
 		//not sure these matter . . . is it because their scope is isolated through the directive?
 		var handleDragOver = function(e){
 			//console.log("over what? ", this)
 			//console.log("mouseover what? ", e.srcElement)
-
+			e.dataTransfer.dropEffect = 'move'
 		}
 
 		var handleDragLeave = function(e){
@@ -39,10 +40,12 @@ angular.module('EducationPlatform')
 				e.stopPropagation();
 			}
 			
+			console.log('e element ', e)
+			
 		
-			if(dragSrcEl !== this){
-				dragSrcEl.innerHTML = this.innerHTML
-				this.innerHTML = e.dataTranfer.getData('text/html')
+			if(drgSrcEl !== this){
+				drgSrcEl.innerHTML = e.srcElement.outerHTML
+				
 			}
 
 

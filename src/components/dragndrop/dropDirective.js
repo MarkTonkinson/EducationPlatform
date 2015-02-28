@@ -2,16 +2,15 @@ angular.module('EducationPlatform')
 .directive('eduDroppable', function(){
 	return {
 		restrict: 'A',
-		scope: {},
 		link: function(scope, element){
 			var el = element[0]
-
+			el.draggable = true;
 			var dragSrc = null;
 			var handleDragOver = function(e){
 				
 				dragSrc = this
 				e.dataTransfer.dropEffect = 'move';
-				e.dataTransfer = e.dataTransfer.setData('newdata', dragSrc.innerHTML)
+				//e.dataTransfer.setData('text/html', dragSrc.outerHTML)
 				
 				if(e.preventDefault){
 					e.preventDefault();
@@ -26,8 +25,8 @@ angular.module('EducationPlatform')
 
 				console.log("this in drop ", this)
 				
-				this.innerHTML = e.dataTransfer.getData('text/html')
-
+				this.outerHTML = e.dataTransfer.getData('text/html')
+				//e.dataTransfer.clearData()
 				return false
 			}
 

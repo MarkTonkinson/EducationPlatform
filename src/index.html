@@ -3,6 +3,7 @@
 <head>
 	<title>Education Central</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/styles.css">
 
 </head>
 
@@ -25,6 +26,10 @@
 			  <div class='column' draggable='true'>
 			  	<edu-profile userprofile='{{user}}'></edu-profile>
 			  </div>
+
+			  <div class='column' draggable='true'>
+				  <quick-quiz></quick-quiz>
+				</div>
 			  
 			  <div class='column' draggable='true'>
 			  	<quick-notes></quick-notes>
@@ -38,10 +43,12 @@
 
 		<div class="col-md-6">
 			<!-- I may be able to move edu-drag into the directive templates rather than being required to use it outsid, i can just put required so people don't forget it! -->
-			<div edu-draggable edu-droppable>
+
+			<!-- One of the main issues doing drag and drop is that the directive loses it's scope . . .. -->
+			<div class='drop-border' edu-draggable edu-droppable>
 				<quick-quiz></quick-quiz>
 			</div>
-			<div edu-draggable >
+			<div class='drop-border' edu-draggable edu-droppable>
 				<quick-notes></quick-notes>
 			</div>
 		</div>
@@ -58,7 +65,7 @@
 
 
 
-		<div ng-controller="anotherCtrl">
+		<div ng-controller="anotherCtrl" >
 			{{test}}
 			<p>{{hi}}</p>
 			<button ng-click="run()">Run</button>
