@@ -2,5 +2,5 @@
 	<!-- {{profileUser}} --><!--  {{profileUser.name}} {{profileUser.role}} -->
 	<h3 style="margin-top:.5rem">{{profileUser.name}} - {{profileUser.role}}</h3>
 	<!-- TODO: Figure out how to prevent it from making this request before its there so I don't get a 404 from the server looking for an actual /profileuser.profilepic -->
-	<img src="{{profileUser.profilePic}}" ng-cloak/>
+	<img src="{{profileUser.profilePic}}" style="width: 90%" ng-cloak/>
 </div>

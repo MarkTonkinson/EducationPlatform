@@ -13,16 +13,13 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-md-6">
-			<quick-quiz></quick-quiz>
-			
-			<quick-notes></quick-notes>
-		</div>
-
-		<div ng-controller="mainCtrl" class="col-md-6">
-			
+		
+		<aside ng-controller="mainCtrl" class="col-md-2" style='border:2px solid blue;'>
+			<h2>Teacher Dashboard</h2>
 			{{test}}
 			<p>{{play}}</p>
+
+			<h4>this will be a list of the plugins</h4>
 
 			<div id="columns">
 			  <div class='column' draggable='true'>
@@ -37,7 +34,19 @@
 			  <div class="column" draggable="true"><header>C</header></div>
 			</div>
 
+		</aside>
+
+		<div class="col-md-6">
+			<!-- I may be able to move edu-drag into the directive templates rather than being required to use it outsid, i can just put required so people don't forget it! -->
+			<div edu-draggable edu-droppable>
+				<quick-quiz></quick-quiz>
+			</div>
+			<div edu-draggable >
+				<quick-notes></quick-notes>
+			</div>
 		</div>
+
+		
 
 		<div class="col-md-4" teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"><p>Help!</p></div>
 
@@ -71,6 +80,8 @@
 <script src="components/studentchecklist/studentChecklistDirective.js"></script>
 <script src="components/quickquiz/quickQuizDirective.js"></script>
 <script src="components/quicknotes/quickNotesDirective.js"></script>
+<script src="components/dragndrop/dragDirective.js"></script>
+<script src="components/dragndrop/dropDirective.js"></script>
 
 <!-- endbuild -->
 
