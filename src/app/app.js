@@ -1,1 +1,1 @@
-angular.module('EducationPlatform', [])
+angular.module('EducationPlatform', ['ngSanitize'])

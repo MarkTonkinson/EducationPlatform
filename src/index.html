@@ -8,73 +8,60 @@
 </head>
 
 
-<body>
+<body ng-controller="mainCtrl">
 
 
 
 <div class="container">
 	<div class="row">
 		
-		<aside ng-controller="mainCtrl" class="col-md-2" style='border:2px solid blue;'>
+		<aside class="col-md-2" style='border:2px solid blue;'>
 			<h2>Teacher Dashboard</h2>
-			{{test}}
-			<p>{{play}}</p>
+		
 
 			<h4>this will be a list of the plugins</h4>
-
+			<div ng-repeat="component in directives.list">
+				<input type="checkbox" ng-model="confirm" ng-change="directives.changeSelect(component)"/>{{component}}<br>
+			</div>
 			<div id="columns">
-			  <div class='column' draggable='true'>
+			  <div>
 			  	<edu-profile userprofile='{{user}}'></edu-profile>
 			  </div>
 
-			  <div class='column' draggable='true'>
-				  <quick-quiz></quick-quiz>
-				</div>
-			  
-			  <div class='column' draggable='true'>
-			  	<quick-notes></quick-notes>
-			  </div>
-			  <div class="column" draggable="true"><header>A</header></div>
-			  <div class="column" draggable="true"><header>B</header></div>
-			  <div class="column" draggable="true"><header>C</header></div>
-			</div>
+
 
 		</aside>
 
-		<div class="col-md-6">
-			<!-- I may be able to move edu-drag into the directive templates rather than being required to use it outsid, i can just put required so people don't forget it! -->
+		<div class="col-md-10">
+				
+				<button ng-click="test()">Run</button>
+			
+				<quick-quiz class="{{col}}" ng-show="directives.quickquiz"></quick-quiz>
+				<quick-notes ng-show="directives.quicknote"></quick-notes>
 
-			<!-- One of the main issues doing drag and drop is that the directive loses it's scope . . .. -->
-			<div class='drop-border' edu-draggable edu-droppable>
-				<quick-quiz></quick-quiz>
-			</div>
-			<div class='drop-border' edu-draggable edu-droppable>
-				<quick-notes></quick-notes>
-			</div>
+				<div ng-show="directives.teacherlinks" class="col-md-4" teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"></div>
+
+				<student-checklist ng-show="directives.studentchecklist" class="col-md-4"></student-checklist>
+		
 		</div>
 
 		
 
-		<div class="col-md-4" teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"><p>Help!</p></div>
+		<quick-notes></quick-notes>
+		
 
-		<student-checklist class="col-md-4"></student-checklist>
-		<text-analysis class="col-md-4">
-			<div><h1>Eat More Chicken!!</h1><div>
-		</text-analysis>
-
-
+		
+		
+		
 
 
-		<div ng-controller="anotherCtrl" >
-			{{test}}
-			<p>{{hi}}</p>
-			<button ng-click="run()">Run</button>
 
-		</div>
+
 	</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-sanitize.min.js"></script>
 <!-- build:js -->
 <script src="app/app.js"></script>
 <script src="mainCtrl.js"></script>

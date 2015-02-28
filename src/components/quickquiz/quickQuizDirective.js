@@ -2,7 +2,9 @@ angular.module('EducationPlatform')
 .directive('quickQuiz', function(){
 	return {
 		restrict: 'E',
-		scope: {},
+		scope: {
+			colspan: '='
+		},
 		link: function(scope, element, attrs){
 			scope.quiz = {}
 			scope.numQuestionsWanted
@@ -23,6 +25,7 @@ angular.module('EducationPlatform')
 			scope.createQuiz = function(){
 				scope.quiz.questions = questions
 				console.log(scope.quiz)
+				//scope.colspan = 'col-md-12'
 			}
 		},
 		templateUrl: 'components/quickquiz/quickQuizTemplate.html'
