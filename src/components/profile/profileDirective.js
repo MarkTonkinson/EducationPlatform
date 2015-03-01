@@ -8,7 +8,8 @@ angular.module('EducationPlatform')
 		},
 		
 		link: function(scope, element, attrs){
-			
+			//The scope is still limited here, it accepts the initial value and doesn't update if the controller scope object does because it has it's own scope
+			//this is because it is meant to be used again for students later . . .
 			if(attrs.userprofile === ''){
 				attrs.userprofile = '{{user}}'
 			}

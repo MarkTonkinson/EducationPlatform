@@ -7,38 +7,50 @@ angular.module('EducationPlatform')
 		role: 'Teacher',
 		profilePic: 'resources/profile.jpg'
 	}
+
+	$scope.test2 = function(){
+
+		$scope.user.name = "Whitney"
+		console.log($scope.user.name)
+	}
 	
 	$scope.test = function(){
 		 //$scope.col = 'col-md-1'
-		$scope.createDirective()
+		$scope.createDirective('student-checklist')
 	}
 
 	$scope.col = 'col-md-12'
 
+	//TODO: teacher-links has to be reworked because it is an attribute and it needs to pass with links
+	//profile is similar in that it needs to have details passed
 	$scope.directives = {
-		list: ['quickquiz', 'quicknote', 'studentchecklist', 'teacherlinks'],
+		list: ['quick-quiz', 'quick-notes', 'student-checklist', 'teacher-links'],
 		changeWidth: function(dirName, newWidth){
 
 		},
 		changeSelect: function(component){
-			console.log(this[component])
-			this[component] = !this[component];
+			// console.log(this[component])
+			// this[component] = !this[component];
+			$scope.createDirective(component)
+
 		},
+
 		quickquiz: false,
 		quicknote: false,
 		studentchecklist:false,
 		teacherlinks:false
 
 	}
-	$scope.createDirective = function(){
+
 	
-			console.log("did it")
-        // now that it's loaded, we can dynamically create one if we wish to
-        // add some sexiness to our app
+	//simulate drag by remembering the state, removing the element, and recreating it?
+	$scope.createDirective = function(directive){
+		
+		 //this was the important key to solving the problem of passing an object as a string!! But would it keep reference if the name changed?
         var obj = $scope.user
         obj = JSON.stringify(obj)
-        var directive = LazyDirectiveLoader.loadDirective('edu-profile', 'userprofile=' + obj);
-        var directive = LazyDirectiveLoader.loadDirective('quick-quiz')
+        //var directive = LazyDirectiveLoader.loadDirective('edu-profile', 'userprofile=' + obj);
+        var directive = LazyDirectiveLoader.loadDirective(directive)
         console.log('directive ', directive)
 
 
@@ -46,7 +58,7 @@ angular.module('EducationPlatform')
 
 
 
-		var body = angular.element(document).find('aside').eq(0);
+		var body = angular.element(document).find('body').eq(0);
 
 		body.append(mover)
 
