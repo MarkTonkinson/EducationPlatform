@@ -8,8 +8,11 @@ angular.module('EducationPlatform')
 		},
 		
 		link: function(scope, element, attrs){
-			console.log(attrs)
-			console.log(typeof scope.profileUser)
+			
+			if(attrs.userprofile === ''){
+				attrs.userprofile = '{{user}}'
+			}
+			console.log(typeof attrs.userprofile)
 			scope.profileUser = JSON.parse(attrs.userprofile)
 			console.log(typeof scope.profileUser)
 			console.log(scope.profileUser)

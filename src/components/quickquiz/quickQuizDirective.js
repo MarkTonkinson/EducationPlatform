@@ -25,7 +25,6 @@ angular.module('EducationPlatform')
 			scope.createQuiz = function(){
 				scope.quiz.questions = questions
 				console.log(scope.quiz)
-				//scope.colspan = 'col-md-12'
 			}
 		},
 		templateUrl: 'components/quickquiz/quickQuizTemplate.html'
