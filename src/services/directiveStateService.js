@@ -5,7 +5,18 @@ angular.module("EducationPlatform")
 	var quickNotesState;
 	var profileState;
 	var studentChecklistState;
-	this.test = function(){
-		console.log('test in service')
+
+	var oldState;
+
+	this.setOldState = function(oldState){
+		if(typeof oldState !== 'string'){
+			console.log("You can't set old state as a string")
+		} else {
+			oldState = oldState;
+		}
+	}
+
+	this.getOldState = function(){
+		return oldState
 	}
 })

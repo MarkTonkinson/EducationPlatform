@@ -1,70 +1,94 @@
 angular.module('EducationPlatform')
-.directive('eduDraggable', function(directiveStateService){
-	
+.directive('eduDraggable', function(directiveStateService, LazyDirectiveLoader, $timeout){
+	//TODO: we drag from the list, listitems will be object with two properties,
+	//the visible name and then the name underneath- or I could give them all the class name
+	//or id- however, that could get messy when trying to mess with the css unless I did a name attribute?  That could work
 	return function(scope, element, attrs){
-		console.log("scope ", scope)
+
 		var el = element[0];
-		console.log('el ', attrs.class), 
+
 		el.draggable = true;
 
-		var dragSrcEl = null;
+		var newElement;
 
+		
 		var handleDragStart = function(e){
-			//console.log('e', e)
-			drgSrcEl = this;
-			
-			//drgSrcEl = drgSrcEl.innerHTML
-
 
 			e.dataTransfer.effectAllowed = 'move'
 			e.dataTransfer.setData('text/plain', attrs.class)
-			
+			return false
 		}
 		
-		var handleDragEnd = function(e){
-			if(e.preventDefault){
-				e.preventDefault();
-			}
-			
-		}
 
-		//not sure these matter . . . is it because their scope is isolated through the directive?
+
+		//these identify the scope of the target
 		var handleDragOver = function(e){
-			//console.log("over what? ", this)
-			//console.log("mouseover what? ", e.srcElement)
+
 			e.dataTransfer.dropEffect = 'move'
+			return false
 		}
 
-		var handleDragLeave = function(e){
-			//console.log('leaving what, ', this)
+		// var handleDragLeave = function(e){
 
-		}
+		// 	return false
 
+		// }
+
+		//this isn't getting called . . .
 		var handleDrop = function(e){
-			if(e.stopPropation){
+			if(e.stopPropagation){
 				e.stopPropagation();
 			}
 			
-			console.log('e element ', e)
-			
-		
-			if(drgSrcEl !== this){
-				drgSrcEl.innerHTML = e.srcElement.outerHTML
-				
-			}
 
+			console.log('this is in drag drop ', this)
+				newElement = e.dataTransfer.getData('text/plain')
+				console.log('newEl, ', newElement)			
 
 
 			return false
 
 		}
 
+		//GRRR - grabbing the whatever it was that was last is proving to be the most difficult part
 
+		
+		//this gets fired after item is dropped, but handledrop doesnt
+		var handleDragEnd = function(e){
+			if(e.preventDefault){
+				e.preventDefault();
+			}
+			//console.log("dragend? ", e)
+			
+			element.empty()
+
+			var stateToTransfer = function(){
+				directiveStateService.getOldState()
+			}
+			
+			if(stateToTransfer() === undefined){
+				$timeout(stateToTransfer, 1000)
+			}
+
+			stateToTranfer = LazyDirectiveLoader.loadDirective(stateToTransfer)
+			
+			//console.log('state to transfer ', stateToTransfer)
+			stateToTransfer = angular.element(stateToTransfer)
+			console.log('state to transfer ', stateToTransfer)
+			element.replaceWith(stateToTransfer)
+
+			
+			
+			return false
+
+		}
+
+		//dynamically add the listeners as needed
 		el.addEventListener('dragstart', handleDragStart, false)
-		el.addEventListener('dragend', handleDragEnd, false)
 		el.addEventListener('dragover', handleDragOver, false)
-		el.addEventListener('dragleave', handleDragLeave, false)
+		// el.addEventListener('dragleave', handleDragLeave, false)
 		el.addEventListener('drop', handleDrop, false)
+		el.addEventListener('dragend', handleDragEnd, false)
 	}
 	
 })

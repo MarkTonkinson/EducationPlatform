@@ -7,11 +7,12 @@ angular.module('EducationPlatform')
     var _loadDirective = function(directiveName, attrsMap) {
         
         //var elementName = _snakeCase(directiveName);
-        console.log('attrsMap ', attrsMap)
+        //console.log('attrsMap ', attrsMap)
         if(attrsMap === undefined){
+            //this way it doesn't append undefined in the element
             attrsMap=''
         }
-        var element = '<div edu-draggable class=' + directiveName + '><' + directiveName + ' ' + attrsMap +'></' + directiveName + '></div>';
+        var element = '<div edu-draggable edu-droppable class=' + directiveName + '><' + directiveName + ' ' + attrsMap +'></' + directiveName + '></div>';
         // TODO: convert `attrsMap` to attributes on the directive element tag
         return $compile(element)($rootScope);
     };
