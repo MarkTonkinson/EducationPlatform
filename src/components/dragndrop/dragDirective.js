@@ -1,8 +1,10 @@
 angular.module('EducationPlatform')
-.directive('eduDraggable', function(){
-	return function(scope, element){
+.directive('eduDraggable', function(directiveStateService){
+	
+	return function(scope, element, attrs){
 		console.log("scope ", scope)
 		var el = element[0];
+		console.log('el ', attrs.class), 
 		el.draggable = true;
 
 		var dragSrcEl = null;
@@ -10,9 +12,12 @@ angular.module('EducationPlatform')
 		var handleDragStart = function(e){
 			//console.log('e', e)
 			drgSrcEl = this;
-			console.log("dragSrc ", drgSrcEl)
+			
+			//drgSrcEl = drgSrcEl.innerHTML
+
+
 			e.dataTransfer.effectAllowed = 'move'
-			e.dataTransfer.setData('text/html', this.outerHTML)
+			e.dataTransfer.setData('text/plain', attrs.class)
 			
 		}
 		

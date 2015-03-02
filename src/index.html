@@ -37,12 +37,13 @@
 				<button ng-click="test()">Run</button>
 				<button ng-click="test2()">Run2</button>
 			
-				<quick-quiz class="{{col}}" ng-show="directives.quickquiz"></quick-quiz>
-				<quick-notes ng-show="directives.quicknote"></quick-notes>
+				<div edu-droppable style="border:1px solid black; min-height:100px; min-width: 100px;">
+					Drop here
+				</div>
 
 				<div ng-show="directives.teacherlinks" class="col-md-4" teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"></div>
 
-				<student-checklist ng-show="directives.studentchecklist" class="col-md-4"></student-checklist>
+
 		
 		</div>
 
@@ -69,7 +70,7 @@
 <script src="anotherCtrl.js"></script>
 <script src="services/testService.js"></script>
 <script src="services/lazyDirectiveLoaderService.js"></script>
-
+<script src="services/directiveStateService.js"></script>
 <script src="components/teacherlinks/teacherLinksDirective.js"></script>
 <script src="components/profile/profileDirective.js"></script>
 <script src="components/textanalysis/textAnalysisDirective.js"></script>

@@ -1,5 +1,5 @@
 angular.module('EducationPlatform')
-.directive('eduDroppable', function(){
+.directive('eduDroppable', function(LazyDirectiveLoader){
 	return {
 		restrict: 'A',
 		link: function(scope, element){
@@ -9,6 +9,7 @@ angular.module('EducationPlatform')
 			var handleDragOver = function(e){
 				
 				dragSrc = this
+
 				e.dataTransfer.dropEffect = 'move';
 				//e.dataTransfer.setData('text/html', dragSrc.outerHTML)
 				
@@ -24,8 +25,16 @@ angular.module('EducationPlatform')
 				}
 
 				console.log("this in drop ", this)
-				
-				this.outerHTML = e.dataTransfer.getData('text/html')
+				console.log("data transfer ", e.dataTransfer.getData('text/plain'))
+
+				var newElement = e.dataTransfer.getData('text/plain')
+				console.log('newEl, ', newElement)
+				el2 = LazyDirectiveLoader.loadDirective(newElement)
+				console.log('el2, ', el2)
+				var replacementEl = angular.element(el2)
+				element.append(replacementEl)
+
+				//console.log($compile(e.dataTransfer.getData('text/plain'))($rootScope))
 				//e.dataTransfer.clearData()
 				return false
 			}

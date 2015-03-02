@@ -1,5 +1,8 @@
 angular.module('EducationPlatform')
-.directive('eduProfile', function(){
+.directive('eduProfile', function(testService, directiveStateService){
+	//console.log('in directive ', testService.user)
+	//directiveStateService.test()	
+	//This shouldn't happen in here though, we should track state just when drag and dropped
 	return {
 		restrict: 'E',
 		//transclude: true,
@@ -13,10 +16,10 @@ angular.module('EducationPlatform')
 			if(attrs.userprofile === ''){
 				attrs.userprofile = '{{user}}'
 			}
-			console.log(typeof attrs.userprofile)
+			//console.log(typeof attrs.userprofile)
 			scope.profileUser = JSON.parse(attrs.userprofile)
-			console.log(typeof scope.profileUser)
-			console.log(scope.profileUser)
+			//console.log(typeof scope.profileUser)
+			//console.log(scope.profileUser)
 
 			//TODO: run checks and warn developer if they don't have all the needed properties
 			//run through a constructor?

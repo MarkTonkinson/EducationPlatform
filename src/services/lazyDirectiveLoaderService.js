@@ -8,12 +8,15 @@ angular.module('EducationPlatform')
         
         //var elementName = _snakeCase(directiveName);
         console.log('attrsMap ', attrsMap)
-        var element = '<' + directiveName + ' ' + attrsMap +'></' + directiveName + '>';
+        if(attrsMap === undefined){
+            attrsMap=''
+        }
+        var element = '<div edu-draggable class=' + directiveName + '><' + directiveName + ' ' + attrsMap +'></' + directiveName + '></div>';
         // TODO: convert `attrsMap` to attributes on the directive element tag
         return $compile(element)($rootScope);
     };
 
-    //don't need this because I'm going to hand it the actual name
+    //don't need this because I'm going to pass it the actual name
     // var _snakeCase = function(name) {
     //     var SNAKE_CASE_REGEXP = /[A-Z]/g;
     //     separator = '-';

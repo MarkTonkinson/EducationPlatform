@@ -5,6 +5,13 @@ angular.module("EducationPlatform")
 	 service.update = function(newObj){
 	 	service.hello = newObj
 	 }
+
+	service.user = {
+		name: 'Mark',
+		role: 'Teacher',
+		profilePic: 'resources/profile.jpg'
+	}
+
 	 return service
 
 })
