@@ -5,17 +5,27 @@ angular.module('EducationPlatform')
 	//or id- however, that could get messy when trying to mess with the css unless I did a name attribute?  That could work
 	return function(scope, element, attrs){
 
-		var directivesArray = ['quick-quiz', 'quick-notes']
+		var directivesArray = ['quick-quiz', 'quick-notes', 'student-checklist', 'teacher-list']
 		var el = element[0];
 
 		el.draggable = true;
 
 		var dragSrc;
 		
+		//the problem is this works when grabbing it from the list
+		//but not when it's starting again
+		//this didnd't getcalled . . .
 		var handleDragStart = function(e){
 			dragSrc = this
 			e.dataTransfer.effectAllowed = 'move'
-			e.dataTransfer.setData('text/plain', this.innerText)
+			if(directivesArray.indexOf(this.innerText) > -1){
+				
+				e.dataTransfer.setData('text/plain', this.innerText)
+			} else {
+				console.log('this ', this.classList)
+				e.dataTransfer.setData('text/plain', this.className )
+			}
+			
 			return false
 		}
 		

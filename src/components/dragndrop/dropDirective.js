@@ -39,16 +39,17 @@ angular.module('EducationPlatform')
 				// 	console.log(prop)
 				// }
 				//console.log("data transfer ", e.dataTransfer.getData('text/plain'))
-
+				
 				var newElement = e.dataTransfer.getData('text/plain')
 				//console.log('newEl, ', newElement)
 				directiveStateService.setOldState(newElement)
 				el2 = LazyDirectiveLoader.loadDirective(newElement)
 				console.log('el2, ', el2)
 				var replacementEl = angular.element(el2)
-
+				replacementEl.addClass(newElement)
+				
 				element.empty()
-				element.replaceWith(replacementEl)
+				element.append(replacementEl)
 				
 				
 				

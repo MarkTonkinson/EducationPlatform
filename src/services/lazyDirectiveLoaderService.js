@@ -14,7 +14,7 @@ angular.module('EducationPlatform')
         }
 
 
-        var element = '<div edu-draggable edu-droppable class="col-md-4"><' + directiveName + ' ' + attrsMap +'></' + directiveName + '></div>';
+        var element = '<div edu-draggable edu-droppable class=' + directiveName + '><' + directiveName + ' ' + attrsMap +'></' + directiveName + '></div>';
         // TODO: convert `attrsMap` to attributes on the directive element tag
         return $compile(element)($rootScope);
     };
