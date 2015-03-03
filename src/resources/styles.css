@@ -1,7 +1,16 @@
+
+
+
+
+
 .drop-border {
 	border: 20px solid black;
 }
 
 .over {
 	border:2px solid red;
+}
+
+.hello {
+	border: 1px solid black;
 }

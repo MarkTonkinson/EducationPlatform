@@ -8,11 +8,11 @@ angular.module("EducationPlatform")
 
 	var oldState;
 
-	this.setOldState = function(oldState){
-		if(typeof oldState !== 'string'){
+	this.setOldState = function(state){
+		if(typeof state !== 'string'){
 			console.log("You can't set old state as a string")
 		} else {
-			oldState = oldState;
+			oldState = state;
 		}
 	}
 

@@ -21,7 +21,7 @@
 
 			<h4>this will be a list of the plugins</h4>
 			<div ng-repeat="component in directives.list">
-				<input type="checkbox" ng-model="confirm" ng-change="directives.changeSelect(component)"/>{{component}}<br>
+				<p ng-click="" edu-draggable> {{component}} </p>
 			</div>
 			<div id="columns">
 			  <div>
@@ -34,14 +34,29 @@
 
 		<div class="col-md-10">
 				
-				<button ng-click="test()">Run</button>
-				<button ng-click="test2()">Run2</button>
+				<!-- <button ng-click="test()">Run</button>
+				<button ng-click="test2()">Run2</button> -->
 			
-				<div edu-draggable edu-droppable style="border:1px solid black; min-height:100px; min-width: 100px;">
+			
+				<div edu-droppable class="hello col-md-4">
+					Drop here
+				</div>
+				
+				<div edu-droppable class="hello col-md-4">
 					Drop here
 				</div>
 
-				<div ng-show="directives.teacherlinks" class="col-md-4" teacher-links="['https://www.facebook.com', 'https://www.google.com', 'http://www.edutopia.com']"></div>
+				<div edu-droppable class="hello col-md-4">
+					Drop here
+				</div>
+
+				<div edu-droppable class="hello col-md-4">
+					Drop here
+				</div>
+
+
+				<quick-notes colspan="col-md-4"></quick-notes>
+
 
 
 		

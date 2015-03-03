@@ -1,21 +1,21 @@
 angular.module('EducationPlatform')
-.directive('eduDraggable', function(directiveStateService, LazyDirectiveLoader, $timeout){
+.directive('eduDraggable', function(directiveStateService, LazyDirectiveLoader){
 	//TODO: we drag from the list, listitems will be object with two properties,
 	//the visible name and then the name underneath- or I could give them all the class name
 	//or id- however, that could get messy when trying to mess with the css unless I did a name attribute?  That could work
 	return function(scope, element, attrs){
 
+		var directivesArray = ['quick-quiz', 'quick-notes']
 		var el = element[0];
 
 		el.draggable = true;
 
-		var newElement;
-
+		var dragSrc;
 		
 		var handleDragStart = function(e){
-
+			dragSrc = this
 			e.dataTransfer.effectAllowed = 'move'
-			e.dataTransfer.setData('text/plain', attrs.class)
+			e.dataTransfer.setData('text/plain', this.innerText)
 			return false
 		}
 		
@@ -28,57 +28,52 @@ angular.module('EducationPlatform')
 			return false
 		}
 
-		// var handleDragLeave = function(e){
 
-		// 	return false
-
-		// }
-
-		//this isn't getting called . . .
+		//handle drop and dragend get called at the same time . . .
 		var handleDrop = function(e){
 			if(e.stopPropagation){
 				e.stopPropagation();
 			}
-			
-
-			console.log('this is in drag drop ', this)
-				newElement = e.dataTransfer.getData('text/plain')
-				console.log('newEl, ', newElement)			
-
+							
 
 			return false
 
 		}
 
-		//GRRR - grabbing the whatever it was that was last is proving to be the most difficult part
 
-		
 		//this gets fired after item is dropped, but handledrop doesnt
 		var handleDragEnd = function(e){
+
 			if(e.preventDefault){
 				e.preventDefault();
 			}
-			//console.log("dragend? ", e)
 			
-			element.empty()
+			
+			// element.empty()
+			// element.append('<div edu-draggable edu-droppable style="min-height:100px; min-width: 100px;" class="hello">Drop here</div>')		
+			
+				
+		
+			
+			return false
 
-			var stateToTransfer = function(){
-				directiveStateService.getOldState()
+		}
+
+		//becaus the directives are entering each other it gets called twice
+		var handleDragEnter = function(e){
+
+			//directiveStateService.setOldState()
+			if(dragSrc !== this){
+		
+				//the initial box doesn't get overridden bc styles is written inline
+				this.classList.add('over')
+				return false
 			}
-			
-			if(stateToTransfer() === undefined){
-				$timeout(stateToTransfer, 1000)
-			}
+		}
 
-			stateToTranfer = LazyDirectiveLoader.loadDirective(stateToTransfer)
-			
-			//console.log('state to transfer ', stateToTransfer)
-			stateToTransfer = angular.element(stateToTransfer)
-			console.log('state to transfer ', stateToTransfer)
-			element.replaceWith(stateToTransfer)
-
-			
-			
+		var handleDragLeave = function(e){
+			//console.log('leaving what, ', this)
+			this.classList.remove('over')
 			return false
 
 		}
@@ -86,9 +81,11 @@ angular.module('EducationPlatform')
 		//dynamically add the listeners as needed
 		el.addEventListener('dragstart', handleDragStart, false)
 		el.addEventListener('dragover', handleDragOver, false)
-		// el.addEventListener('dragleave', handleDragLeave, false)
-		el.addEventListener('drop', handleDrop, false)
+		el.addEventListener('dragenter', handleDragEnter, false)
+		el.addEventListener('dragleave', handleDragLeave, false)
+		
 		el.addEventListener('dragend', handleDragEnd, false)
+		el.addEventListener('drop', handleDrop, false)
 	}
 	
 })

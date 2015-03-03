@@ -22,47 +22,43 @@ angular.module('EducationPlatform')
 				return false
 			}
 
-			var handleDragEnter = function(e){
-				this.classList.add('over')
-			}
-
-			var handleDragLeave = function(e){
-				//console.log('leaving what, ', this)
-				this.classList.remove('over')
-				return false
-
-			}
 
 
+
+
+			//new issue- if I drop it in a box always, but remove the box, then the box will disappear
 			var handleDrop = function(e){
 				if(e.stopPropagation){
 					e.stopPropagation()
 				}
 				this.classList.remove('over')
-				console.log("this in drop drop ", this)
+				console.log("this in drop drop ", this.className)
+				console.log('element ', this.innerText)
+				// for(var prop in this){
+				// 	console.log(prop)
+				// }
 				//console.log("data transfer ", e.dataTransfer.getData('text/plain'))
 
 				var newElement = e.dataTransfer.getData('text/plain')
-				console.log('newEl, ', newElement)
+				//console.log('newEl, ', newElement)
 				directiveStateService.setOldState(newElement)
 				el2 = LazyDirectiveLoader.loadDirective(newElement)
 				//console.log('el2, ', el2)
 				var replacementEl = angular.element(el2)
 
-				element.empty()
+				
 				element.replaceWith(replacementEl)
 				
 				
 				
 
-				//console.log($compile(e.dataTransfer.getData('text/plain'))($rootScope))
-				//e.dataTransfer.clearData()
 				return false
 			}
 
 			el.addEventListener('dragover', handleDragOver, false)
-			el.addEventListener('dragleave', handleDragLeave, false)
+
 			el.addEventListener('drop', handleDrop, false)
+			
 		}
 	}
 })
