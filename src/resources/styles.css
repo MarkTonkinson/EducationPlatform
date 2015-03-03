@@ -14,7 +14,7 @@
 .standard-directive {
 	min-height: 22rem;
 }
-.hello {
+.directive-container {
 	border: 1px solid black;
 	min-height:22rem;
 	margin: 1rem;

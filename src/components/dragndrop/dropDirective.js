@@ -26,22 +26,16 @@ angular.module('EducationPlatform')
 
 
 
-			//new issue- if I drop it in a box always, but remove the box, then the box will disappear
-			//And if you drop it on another directive we now have issues again
+			
 			var handleDrop = function(e){
 				if(e.stopPropagation){
 					e.stopPropagation()
 				}
 				this.classList.remove('over')
-				console.log("this in drop drop ", this.className)
-				console.log('element ', this.innerText)
-				// for(var prop in this){
-				// 	console.log(prop)
-				// }
-				//console.log("data transfer ", e.dataTransfer.getData('text/plain'))
+	
 				
 				var newElement = e.dataTransfer.getData('text/plain')
-				//console.log('newEl, ', newElement)
+				console.log('newEl, ', newElement)
 				directiveStateService.setOldState(newElement)
 				el2 = LazyDirectiveLoader.loadDirective(newElement)
 				console.log('el2, ', el2)
@@ -49,6 +43,8 @@ angular.module('EducationPlatform')
 				replacementEl.addClass(newElement)
 				
 				element.empty()
+				//if I empty then append, what we get is a continually growing outer divs of past
+				//directives if each directive has edu-droppable, for now that is removed
 				element.append(replacementEl)
 				
 				

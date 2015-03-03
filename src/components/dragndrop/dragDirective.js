@@ -22,8 +22,10 @@ angular.module('EducationPlatform')
 				
 				e.dataTransfer.setData('text/plain', this.innerText)
 			} else {
-				console.log('this ', this.classList)
-				e.dataTransfer.setData('text/plain', this.className )
+				//the reason I can't dynamically add it at directive load 
+				//is that it loses reference to which one is which
+				
+				e.dataTransfer.setData('text/plain', this.classList[1] )
 			}
 			
 			return false
@@ -58,11 +60,14 @@ angular.module('EducationPlatform')
 				e.preventDefault();
 			}
 			
+			console.log('this ', this)
+			console.log('element in drag to be replaced, ', element[0].offsetParent.tagName)
+			//will this only work for chrome browser?
+			if(element[0].offsetParent.tagName !== 'ASIDE'){
+				element.empty()
+				element.replaceWith('Drop here')		
+			}
 			
-			// element.empty()
-			// element.append('<div edu-draggable edu-droppable style="min-height:100px; min-width: 100px;" class="hello">Drop here</div>')		
-			
-				
 		
 			
 			return false
