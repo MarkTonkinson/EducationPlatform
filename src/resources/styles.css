@@ -11,6 +11,11 @@
 	border:2px solid red;
 }
 
+.standard-directive {
+	min-height: 22rem;
+}
 .hello {
 	border: 1px solid black;
+	min-height:22rem;
+	margin: 1rem;
 }

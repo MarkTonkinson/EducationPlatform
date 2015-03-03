@@ -27,6 +27,7 @@ angular.module('EducationPlatform')
 
 
 			//new issue- if I drop it in a box always, but remove the box, then the box will disappear
+			//And if you drop it on another directive we now have issues again
 			var handleDrop = function(e){
 				if(e.stopPropagation){
 					e.stopPropagation()
@@ -43,10 +44,10 @@ angular.module('EducationPlatform')
 				//console.log('newEl, ', newElement)
 				directiveStateService.setOldState(newElement)
 				el2 = LazyDirectiveLoader.loadDirective(newElement)
-				//console.log('el2, ', el2)
+				console.log('el2, ', el2)
 				var replacementEl = angular.element(el2)
 
-				
+				element.empty()
 				element.replaceWith(replacementEl)
 				
 				

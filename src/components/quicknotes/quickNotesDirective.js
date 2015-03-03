@@ -3,7 +3,7 @@ angular.module('EducationPlatform')
 	return {
 		restrict: 'E',
 		scope: {
-			colspan: '='
+			
 		},
 		link: function(scope, element, attrs){
 			console.log(attrs)
