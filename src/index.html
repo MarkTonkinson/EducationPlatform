@@ -21,7 +21,7 @@
 
 			<h4>this will be a list of the plugins</h4>
 			<div ng-repeat="component in directives.list">
-				<p ng-click="" edu-draggable> {{component}} </p>
+				<p ng-click=""> {{component}} </p>
 			</div>
 			<div id="columns">
 			  <div>
@@ -33,27 +33,15 @@
 		</aside>
 
 		<div class="col-md-10">
+			
 				
-			<!-- <button ng-click="test()">Run</button>
-			<button ng-click="test2()">Run2</button> -->
-			<div edu-droppable class="directive-container col-md-4">
-				Drop here
-			</div>
+				<!-- This is odd. when the bootstrap column wasn't defined, it wouldn't move
+				is that because it didn't have an initial position? -->
+				<quick-quiz class="col-md-6"></quick-quiz>	
+				
+				<student-checklist class="col-md-6"></student-checklist>
 
-			<div edu-droppable class="directive-container col-md-4">
-				Drop here
-			</div>		
-
-			<div edu-droppable class="directive-container col-md-4">
-				Drop here
-			</div>
-
-
-			<div edu-droppable class="directive-container col-md-4">
-				Drop here
-			</div>
-
-		
+				<teacher-links class="col-md-6"></teacher-links>
 				<quick-notes class="col-md-6"></quick-notes>
 	
 
