@@ -10,7 +10,7 @@
 
 <body ng-controller="mainCtrl">
 
-
+<ng-view></ng-view>
 
 <div class="container">
 	<div class="row">
@@ -37,12 +37,20 @@
 				
 				<!-- This is odd. when the bootstrap column wasn't defined, it wouldn't move
 				is that because it didn't have an initial position? -->
-				<quick-quiz class="col-md-6"></quick-quiz>	
-				
-				<student-checklist class="col-md-6"></student-checklist>
 
-				<teacher-links class="col-md-6"></teacher-links>
-				<quick-notes class="col-md-6"></quick-notes>
+				<!-- When I tried to change out of bootstrap my move function no longer worked . . . -->
+
+				<!-- It might be an issue with the digest cycle.  The changes don't happen until I run an ng repeat
+				Angular may be evaluating on how to move dom elements based on the last dirty check
+				Maybe I need to run the dirty check/digest cycle after mouseup -->
+
+				<!-- I could prevent this issue by making the quiz component always the right height to hold the quiz -->
+				<quick-quiz class="col-md-5"></quick-quiz>	
+				
+				<student-checklist class="col-md-5"></student-checklist>
+
+				<teacher-links class="col-md-5"></teacher-links>
+				<quick-notes class="col-md-5"></quick-notes>
 	
 
 
@@ -67,10 +75,12 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-sanitize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-route.min.js"></script>
 <!-- build:js -->
 <script src="app/app.js"></script>
 <script src="mainCtrl.js"></script>
 <script src="anotherCtrl.js"></script>
+<script src="smartQuizCtrl.js"></script>
 <script src="services/testService.js"></script>
 <script src="services/lazyDirectiveLoaderService.js"></script>
 <script src="services/directiveStateService.js"></script>

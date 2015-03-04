@@ -1,12 +1,16 @@
-var app = angular.module('EducationPlatform', ['ngSanitize'])
+var app = angular.module('EducationPlatform', ['ngSanitize', 'ngRoute'])
 
 
-app.config(['$compileProvider', function($compileProvider) {
+app.config(['$compileProvider', '$routeProvider', function($compileProvider, $routeProvider) {
 
-    // $routeProvider.when('/', {
-    //     templateUrl: 'views/Home.html',
-    //     controller: 'HomeController'
-    // });
+    $routeProvider
+    .when('/', {
+        controller: 'mainCtrl'
+    })
+    .when('/smartQuiz', {
+    	controller: 'smartQuizCtrl',
+    	templateUrl: '../smartQuiz.html'
+    })
 
     app.compileProvider = $compileProvider;
 

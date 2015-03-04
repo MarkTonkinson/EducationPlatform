@@ -18,4 +18,5 @@
 	border: 1px solid black;
 	min-height:22rem;
 	margin: 1rem;
+	overflow: scroll;
 }

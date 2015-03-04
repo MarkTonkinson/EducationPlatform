@@ -1,0 +1,33 @@
+<h1>Smart Quiz</h1>
+
+
+<table>
+	<th ng-repeat="colHead in table.colHeads">{{colHead}}</th>
+
+
+	<tr ng-repeat="row in table.rows track by $index">
+
+		<td ng-repeat="(num, val) in table.rows[$index]">
+			<input type="text" ng-model="row[num].question" ng-focus="table.showAnswers(row[num].answers)"></input>
+			
+		</td>
+		
+		
+	</tr>
+	<td><button ng-click="table.addRow()">AddRow</button></td>	
+</table>
+
+<div>Answers
+<table>
+	<tr>
+		<td ng-repeat="(key, val) in answers">
+			<input type="text" ng-model="answers[key]"></input>
+		</td>
+	</tr>
+</table>
+
+<button ng-click="table.save()">save</button>
+
+</div>
+
+{{table.rows}}

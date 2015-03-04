@@ -62,6 +62,7 @@ angular.module('EducationPlatform')
 			            console.log('mouseup')
 			            element.unbind()
 			            allowMove = false
+			           
 			        })
 		        }
 		    }
