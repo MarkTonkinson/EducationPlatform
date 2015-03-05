@@ -1,13 +1,17 @@
 angular.module('EducationPlatform')
-.controller('smartQuizCtrl', function($scope){
+.controller('smartQuizCtrl', function($scope, smartQuizService){
 	
 	$scope.answers = ''
 	$scope.table = {
 		colHeads: ['Primary Question', "Followup 1", 'Followup 2', 'Followup 3'],
+		//TODO: Let's take the rows and turn them into a large quiz object that is counted
+		//that way we don't have arrays within arrays to get the quizzes
 		rows: [],
 		addRow: function(){
 			
 			var questionObj = {
+				//TODO this should be a function that creates it!!
+
 				1: {
 					question: '',
 					answers: {
@@ -54,7 +58,8 @@ angular.module('EducationPlatform')
 			$scope.answers = answers
 		},
 		save: function(){
-			console.log(this.rows[0])
+			smartQuizService.addQuiz(this.rows)
+			//console.log(this.rows[0])
 		}
 	}
 

@@ -20,3 +20,7 @@
 	margin: 1rem;
 	overflow: scroll;
 }
+
+.quiz-answers {
+	padding-left: 1rem;
+}

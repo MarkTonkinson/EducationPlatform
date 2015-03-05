@@ -1,33 +1,58 @@
-<h1>Smart Quiz</h1>
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-6">
+			<h1>Smart Quiz</h1>
 
 
-<table>
-	<th ng-repeat="colHead in table.colHeads">{{colHead}}</th>
+			<table>
+				<th ng-repeat="colHead in table.colHeads">{{colHead}}</th>
 
 
-	<tr ng-repeat="row in table.rows track by $index">
+				<tr ng-repeat="row in table.rows track by $index">
 
-		<td ng-repeat="(num, val) in table.rows[$index]">
-			<input type="text" ng-model="row[num].question" ng-focus="table.showAnswers(row[num].answers)"></input>
-			
-		</td>
-		
-		
-	</tr>
-	<td><button ng-click="table.addRow()">AddRow</button></td>	
-</table>
+					<td ng-repeat="(num, val) in table.rows[$index]">
+						<input type="text" ng-model="row[num].question" ng-focus="table.showAnswers(row[num].answers)"></input>
+						
+					</td>
+					
+					
+				</tr>
+				<tr>
+					<td><button ng-click="table.addRow()">AddRow</button></td>
+				</tr>
+			</table>
 
-<div>Answers
-<table>
-	<tr>
-		<td ng-repeat="(key, val) in answers">
-			<input type="text" ng-model="answers[key]"></input>
-		</td>
-	</tr>
-</table>
+				Answers-Check The Correct Answer
+			<table>
 
-<button ng-click="table.save()">save</button>
+				<th ng-repeat='(key, val) in answers'>{{key}}<input type="checkbox" ng-selected></input></th>
+				<tr>
+					
 
+
+					<td ng-repeat="(key, val) in answers">
+						<input type="text" ng-model="answers[key]"></input>
+					</td>
+				</tr>
+			</table>
+
+			<button ng-click="table.save()">save</button>
+
+		</div>
+
+		<div class="col-md-6">
+			<h2>Preview</h2>
+			<div ng-repeat="row in table.rows track by $index">
+				<div ng-repeat="(num, val) in table.rows[$index]">
+					{{num}}  {{val.question}}
+					<div class="quiz-answers" ng-repeat="(key, val) in val.answers">
+						{{key}}: {{val}}
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 </div>
-
-{{table.rows}}

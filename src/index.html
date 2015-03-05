@@ -10,6 +10,7 @@
 
 <body ng-controller="mainCtrl">
 
+<!-- TODO: Study and Use the new angular router from 1.4!! -->
 <ng-view></ng-view>
 
 <div class="container">
@@ -38,13 +39,13 @@
 				<!-- This is odd. when the bootstrap column wasn't defined, it wouldn't move
 				is that because it didn't have an initial position? -->
 
-				<!-- When I tried to change out of bootstrap my move function no longer worked . . . -->
+			
 
 				<!-- It might be an issue with the digest cycle.  The changes don't happen until I run an ng repeat
 				Angular may be evaluating on how to move dom elements based on the last dirty check
 				Maybe I need to run the dirty check/digest cycle after mouseup -->
 
-				<!-- I could prevent this issue by making the quiz component always the right height to hold the quiz -->
+			
 				<quick-quiz class="col-md-5"></quick-quiz>	
 				
 				<student-checklist class="col-md-5"></student-checklist>
@@ -58,7 +59,7 @@
 		
 		</div>
 
-		
+		<button ng-click="getQuiz()">Get Quizzes</button>
 
 		
 		
@@ -84,6 +85,7 @@
 <script src="services/testService.js"></script>
 <script src="services/lazyDirectiveLoaderService.js"></script>
 <script src="services/directiveStateService.js"></script>
+<script src="services/smartQuizService.js"></script>
 <script src="components/teacherlinks/teacherLinksDirective.js"></script>
 <script src="components/profile/profileDirective.js"></script>
 <script src="components/textanalysis/textAnalysisDirective.js"></script>

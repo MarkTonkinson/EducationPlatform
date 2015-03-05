@@ -1,5 +1,5 @@
 angular.module('EducationPlatform')
-.controller('mainCtrl', function($scope, testService, $sce, LazyDirectiveLoader){
+.controller('mainCtrl', function($scope, testService, $sce, LazyDirectiveLoader, smartQuizService){
 	
 	$scope.play = testService
 	$scope.user = {
@@ -53,16 +53,18 @@ angular.module('EducationPlatform')
         var directive = LazyDirectiveLoader.loadDirective(directive)
         console.log('directive ', directive)
 
-
         var mover = angular.element(directive);
-
-
 
 		var body = angular.element(document).find('body').eq(0);
 
 		body.append(mover)
 
 
+	}
+
+	$scope.getQuiz = function(){
+		var quiz = smartQuizService.getQuiz()
+		console.log(quiz)
 	}
 	/* 
 	Drag and drop ideas:
