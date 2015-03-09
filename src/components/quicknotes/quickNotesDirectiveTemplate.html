@@ -1,6 +1,14 @@
 <div style="border:1px solid black; margin: 1rem; padding: 0rem 1rem 1rem 1rem;">
 	<h3>Notes</h3>
 	<!-- how to confine to outer div? -->
-	<textarea style="width: 100%"></textarea>
+	<textarea ng-model="newNote" style="width: 100%"></textarea>
+	<button ng-click="addNote(newNote)">Add Note</button>
 	<button ng-click="allowMove()">AllowMove</button>
+
+	<div ng-repeat="note in notes track by $index">
+		{{$index + 1}}. {{note}}
+	</div>
 </div>
+
+
+

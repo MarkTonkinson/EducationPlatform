@@ -45,6 +45,13 @@ angular.module('EducationPlatform')
 				}
 			}
 		},
-		templateUrl: 'components/quicknotes/quickNotesDirectiveTemplate.html'
+		templateUrl: 'components/quicknotes/quickNotesDirectiveTemplate.html',
+		controller: function($scope){
+			$scope.notes = []
+			$scope.addNote = function(note){
+				$scope.notes.push(note)
+				$scope.newNote = ''
+			}
+		}
 	}
 })

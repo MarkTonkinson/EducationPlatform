@@ -7,59 +7,33 @@ angular.module('EducationPlatform')
 		//TODO: Let's take the rows and turn them into a large quiz object that is counted
 		//that way we don't have arrays within arrays to get the quizzes
 		rows: [],
+		currentIndex: '',
+		currentQuestion: '',
 		addRow: function(){
-			
-			var questionObj = {
-				//TODO this should be a function that creates it!!
-
-				1: {
-					question: '',
-					answers: {
-						a: '',
-						b: '',
-						c: '',
-						d: ''
-					}
-				},
-				2: {
-					question: '',
-					answers: {
-						a: '',
-						b: '',
-						c: '',
-						d: ''
-					}
-				},
-				3: {
-					question: '',
-					answers: {
-						a: '',
-						b: '',
-						c: '',
-						d: ''
-					}
-				},
-				4: {
-					question: '',
-					answers: {
-						a: '',
-						b: '',
-						c: '',
-						d: ''
-					}
-				}
+			var questionObj={}
+			for(var i=1; i <= 4; i++){
+				questionObj[i] = {}
+				questionObj[i].question = ''
+				questionObj[i].answers = {a: '', b:'', c:'', d:''}
+				questionObj[i].answer = ''
 			}
-
+			console.log('questionObj ', questionObj)
 			this.rows.push(questionObj)
 
 		},
-		showAnswers: function(answers){
-			//console.log('here ', answers)
+		showAnswers: function(answers, i, questionNum){
+			console.log(i)
 			$scope.answers = answers
+			this.currentIndex = i
+			this.currentQuestion = questionNum
 		},
 		save: function(){
 			smartQuizService.addQuiz(this.rows)
 			//console.log(this.rows[0])
+		},
+		setAnswer: function(key){
+			this.rows[this.currentIndex][this.currentQuestion].answer = key
+			$scope.choseAnswer = key
 		}
 	}
 
