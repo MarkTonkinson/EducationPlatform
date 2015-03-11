@@ -53,11 +53,13 @@ angular.module('EducationPlatform')
         var directive = LazyDirectiveLoader.loadDirective(directive)
         console.log('directive ', directive)
 
-        var mover = angular.element(directive);
+        var newDirective = angular.element(directive);
 
-		var body = angular.element(document).find('body').eq(0);
+		var divs = angular.element(document).find('section');
 
-		body.append(mover)
+		console.log(divs)
+
+		divs.append(newDirective)
 
 
 	}

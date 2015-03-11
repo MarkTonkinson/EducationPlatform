@@ -15,7 +15,7 @@ angular.module('EducationPlatform')
 				questionObj[i] = {}
 				questionObj[i].question = ''
 				questionObj[i].answers = {a: '', b:'', c:'', d:''}
-				questionObj[i].answer = ''
+				questionObj[i].answer = []
 			}
 			console.log('questionObj ', questionObj)
 			this.rows.push(questionObj)
@@ -31,9 +31,18 @@ angular.module('EducationPlatform')
 			smartQuizService.addQuiz(this.rows)
 			//console.log(this.rows[0])
 		},
-		setAnswer: function(key){
-			this.rows[this.currentIndex][this.currentQuestion].answer = key
-			$scope.choseAnswer = key
+		setAnswer: function(key, chosenAnswer){
+			//console.log(chosenAnswer, typeof chosenAnswer)
+			var answerArr = this.rows[this.currentIndex][this.currentQuestion].answer
+			if(chosenAnswer === true && answerArr.indexOf(key) === -1){
+				answerArr.push(key)
+			} else if(chosenAnswer === false && answerArr.indexOf(key) > -1){
+				answerArr.splice(answerArr.indexOf(key), 1)
+			}
+
+			//console.log(answerArr)
+
+			
 		}
 	}
 

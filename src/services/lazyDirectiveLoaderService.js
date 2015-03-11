@@ -12,7 +12,7 @@ angular.module('EducationPlatform')
         }
 
         //if you make this droppable, it starts to nest divs inside each other
-        var element = '<div><' + directiveName + ' ' + attrsMap +'></' + directiveName + '></div>';
+        var element = '<div><' + directiveName + ' ' + attrsMap + 'class="col-md-5"></' + directiveName + '></div>';
         // TODO: convert `attrsMap` to attributes on the directive element tag
         return $compile(element)($rootScope);
     };

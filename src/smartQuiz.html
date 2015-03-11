@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<h1>Smart Quiz</h1>
 
 
@@ -14,22 +14,17 @@
 					<td ng-repeat="(num, val) in table.rows[$index]">
 						<input type="text" ng-model="row[num].question" ng-focus="table.showAnswers(row[num].answers, $index, num)"></input>
 						
-					</td>
-					
-					
+					</td>					
 				</tr>
-				<tr>
-					<td><button ng-click="table.addRow()">AddRow</button></td>
-				</tr>
+				
 			</table>
+			<button ng-click="table.addRow()">AddRow</button>
 
-				Answers-Check The Correct Answer
+			<h3>Check The Correct Answer(s)</h3>
 			<table>
 
-				<th ng-repeat='(key, val) in answers'>{{key}}<input ng-model="v" type="checkbox" ng-change="table.setAnswer(key)"></input></th>
+				<th ng-repeat='(key, val) in answers'>{{key}}<input type="checkbox" ng-model="chosenAnswer" type="checkbox" ng-change="table.setAnswer(key, chosenAnswer)" ng-true-value="true" ng-false-value="false"></input></th>
 				<tr>
-					
-
 
 					<td ng-repeat="(key, val) in answers">
 						<input type="text" ng-model="answers[key]"></input>
@@ -41,7 +36,7 @@
 
 		</div>
 
-		<div class="col-md-6">
+		<div class="col-md-12">
 			<h2>Preview</h2>
 			<div ng-repeat="row in table.rows track by $index">
 				<div ng-repeat="(num, val) in table.rows[$index]">

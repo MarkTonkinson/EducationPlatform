@@ -13,7 +13,7 @@
 <!-- TODO: Study and Use the new angular router from 1.4!! -->
 <ng-view></ng-view>
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
 		
 		<aside class="col-md-2" style='border:2px solid blue;'>
@@ -22,7 +22,7 @@
 
 			<h4>this will be a list of the plugins</h4>
 			<div ng-repeat="component in directives.list">
-				<p ng-click=""> {{component}} </p>
+				<p ng-click="createDirective(component)"> {{component}} </p>
 			</div>
 			<div id="columns">
 			  <div>
@@ -33,7 +33,8 @@
 
 		</aside>
 
-		<div class="col-md-10">
+		<!-- TODO: Resolve this - IF ANYTHING ELSE GET'S NAMED SECTION ON THIS PAGE IT WILL MESS UP THE directive loader -->
+		<section class="col-md-10">
 			
 				
 				<!-- This is odd. when the bootstrap column wasn't defined, it wouldn't move
@@ -58,7 +59,7 @@
 
 
 		
-		</div>
+		</section>
 
 		<button ng-click="getQuiz()">Get Quizzes</button>
 
