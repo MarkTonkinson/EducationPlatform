@@ -1,7 +1,10 @@
 
 
 
-
+nav {
+	height: 10rem;
+	border-bottom: 2px solid black;
+}
 
 .drop-border {
 	border: 20px solid black;

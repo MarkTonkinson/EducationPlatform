@@ -5,7 +5,8 @@ app.config(['$compileProvider', '$routeProvider', function($compileProvider, $ro
 
     $routeProvider
     .when('/', {
-        controller: 'mainCtrl'
+        controller: 'teacherDashboardCtrl',
+        templateUrl:'../views/teacher-dashboard/teacher-dashboard-template.html'
     })
     .when('/smartQuiz', {
     	controller: 'smartQuizCtrl',

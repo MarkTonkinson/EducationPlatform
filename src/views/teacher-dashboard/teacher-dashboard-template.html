@@ -1,0 +1,47 @@
+<div class="container-fluid">
+	<div class="row">
+		
+		<aside class="col-md-2" style='border:2px solid blue;'>
+			<h2>Teacher Dashboard</h2>
+		
+
+			<h4>this will be a list of the plugins</h4>
+			<div ng-repeat="component in directives.list">
+				<p ng-click="createDirective(component)"> {{component}} </p>
+			</div>
+			<div id="columns">
+			  <div>
+			  	<edu-profile userprofile='{{user}}'></edu-profile>
+			  </div>
+
+
+
+		</aside>
+
+		<!-- TODO: Resolve this - IF ANYTHING ELSE GET'S NAMED SECTION ON THIS PAGE IT WILL MESS UP THE directive loader -->
+		<section class="col-md-10">
+			
+				
+				<!-- This is odd. when the bootstrap column wasn't defined, it wouldn't move
+				is that because it didn't have an initial position? -->
+
+			
+
+				<!-- It might be an issue with the digest cycle.  The changes don't happen until I run an ng repeat
+				Angular may be evaluating on how to move dom elements based on the last dirty check
+				Maybe I need to run the dirty check/digest cycle after mouseup -->
+
+			
+				<quick-quiz class="col-md-5"></quick-quiz>	
+				
+				<student-checklist class="col-md-5"></student-checklist>
+
+				<teacher-links class="col-md-5"></teacher-links>
+				<quick-notes class="col-md-5"></quick-notes>
+				<quick-notes class="col-md-5"></quick-notes>
+	
+
+
+
+		
+		</section>
