@@ -4,13 +4,19 @@
 	<title>Education Central</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="resources/styles.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 </head>
 
 
 <body ng-controller="mainCtrl">
 
-<nav>This is the navigation</nav>
+<nav>This is the navigation
+<ul>
+	<li><a href="#/">Home/TeacherDashboard</a></li>
+	<li><a href="#/smartQuiz">SmartQuizBuilder</a></li>
+</ul>
+</nav>
 <!-- TODO: Study and Use the new angular router from 1.4!! -->
 <ng-view></ng-view>
 

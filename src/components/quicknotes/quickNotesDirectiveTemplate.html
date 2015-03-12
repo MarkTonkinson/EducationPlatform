@@ -3,7 +3,7 @@
 	<!-- how to confine to outer div? -->
 	<textarea ng-model="newNote" style="width: 100%"></textarea>
 	<button ng-click="addNote(newNote)">Add Note</button>
-	<button ng-click="allowMove()">AllowMove</button>
+	<button ng-click="allowMove()"><i class="fa fa-unlock-alt"></i></button>
 
 	<div ng-repeat="note in notes track by $index">
 		{{$index + 1}}. {{note}}

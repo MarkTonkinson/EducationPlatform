@@ -5,9 +5,10 @@
 			<h2>Teacher Dashboard</h2>
 		
 
-			<h4>this will be a list of the plugins</h4>
+			<h4>Tools</h4>
+			<h6>Click to add to dashboard</h6>
 			<div ng-repeat="component in directives.list">
-				<p ng-click="createDirective(component)"> {{component}} </p>
+				<button class="btn-default c-teachdash-button" ng-click="createDirective(component)"> {{component}} </button>
 			</div>
 			<div id="columns">
 			  <div>
@@ -32,14 +33,14 @@
 				Maybe I need to run the dirty check/digest cycle after mouseup -->
 
 			
-				<quick-quiz class="col-md-5"></quick-quiz>	
+<!-- 				<quick-quiz class="col-md-5"></quick-quiz>	
 				
 				<student-checklist class="col-md-5"></student-checklist>
 
 				<teacher-links class="col-md-5"></teacher-links>
 				<quick-notes class="col-md-5"></quick-notes>
 				<quick-notes class="col-md-5"></quick-notes>
-	
+	 -->
 
 
 

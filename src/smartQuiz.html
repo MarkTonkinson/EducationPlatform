@@ -4,10 +4,15 @@
 		<div class="col-md-12">
 			<h1>Smart Quiz</h1>
 
-			
+			<h2>Editing Toolbar</h2>
+			<!-- <div>
+				<ul ng-repeat="(key, val) in quiz.questionObjects">
+					<li>{{key + 1}}<input type="checkbox" ng-model="showVal" ng-change="quiz.showQuestion(key, showVal)"></li>
+				</ul> -->
 			{{quiz.questionObjects}}
 			<div ng-repeat="(question, val) in quiz.questionObjects track by $index">
-				<div ng-repeat="(key, val) in val">
+				<h3>Question {{$index + 1}}<input type="checkbox" ng-model="showQuestion" ng-change="!showQuestion"></h3>
+				<div ng-repeat="(key, val) in val" ng-show="showQuestion">
 					
 					{{key}}:<input ng-model="val.question">
 					<ul ng-repeat="(key2, val2) in val.answers">
@@ -20,48 +25,8 @@
 			</div>
 			
 
-			<table>
-				<!-- <th ng-repeat="colHead in table.colHeads">{{colHead}}</th> -->
+			<button ng-click="quiz.addQuestionObj()">Add New Question</button>
 
-
-				<!-- <tr ng-repeat="row in table.rows track by $index">
-
-					<td ng-repeat="(num, val) in table.rows[$index]">
-						<input type="text" ng-model="row[num].question" ng-focus="table.showAnswers(row[num].answers, $index, num)"></input>
-						
-					</td>					
-				</tr> -->
-				
-			</table>
-			<button ng-click="quiz.addQuestionObj()">AddRow</button>
-
-			<h3>Check The Correct Answer(s)</h3>
-			<!-- <table>
-
-				<th ng-repeat='(key, val) in answers'>{{key}}<input type="checkbox" ng-model="chosenAnswer" type="checkbox" ng-change="table.setAnswer(key, chosenAnswer)" ng-true-value="true" ng-false-value="false"></input></th>
-				<tr>
-
-					<td ng-repeat="(key, val) in answers">
-						<input type="text" ng-model="answers[key]"></input>
-					</td>
-				</tr>
-			</table> -->
-
-			<!-- <button ng-click="table.save()">save</button> -->
-
-		</div>
-
-		<!-- <div class="col-md-12">
-			<h2>Preview</h2>
-			<div ng-repeat="row in table.rows track by $index">
-				<div ng-repeat="(num, val) in table.rows[$index]">
-					{{num}}  {{val.question}}
-					<div class="quiz-answers" ng-repeat="(key, val) in val.answers">
-						{{key}}: {{val}}
-					</div>
-				</div>
-			</div>
-		</div> -->
 
 
 	</div>

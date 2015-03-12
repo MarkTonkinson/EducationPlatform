@@ -5,5 +5,5 @@
 	<div ng-repeat="link in list track by $index">
 		<p><button ng-click="list.splice($index,1)">Remove</button><a href="{{link}}">{{link}}</a><p>
 	</div>
-	<button ng-click="allowMove()">AllowMove</button>
+	<button ng-click="allowMove()"><i class="fa fa-unlock-alt"></i></button>
 </div>
