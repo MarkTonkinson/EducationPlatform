@@ -1,18 +1,18 @@
 <div class="container-fluid">
 	<div class="row">
 		
-		<aside class="col-md-2" style='border:2px solid blue;'>
-			<h2>Teacher Dashboard</h2>
+		<aside class="col-md-2 c-dashboard">
+			
 		
-
+			<h3>Teacher Dashboard</h3>
 			<h4>Tools</h4>
 			<h6>Click to add to dashboard</h6>
 			<div ng-repeat="component in directives.list">
 				<button class="btn-default c-teachdash-button" ng-click="createDirective(component)"> {{component}} </button>
 			</div>
-			<div id="columns">
+			
 			  <div>
-			  	<edu-profile userprofile='{{user}}'></edu-profile>
+			  	<!-- <edu-profile userprofile='{{user}}'></edu-profile> -->
 			  </div>
 
 
@@ -21,6 +21,7 @@
 
 		<!-- TODO: Resolve this - IF ANYTHING ELSE GET'S NAMED SECTION ON THIS PAGE IT WILL MESS UP THE directive loader -->
 		<section class="col-md-10">
+			
 			
 				
 				<!-- This is odd. when the bootstrap column wasn't defined, it wouldn't move
