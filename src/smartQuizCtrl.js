@@ -28,7 +28,7 @@ angular.module('EducationPlatform')
 		// 	this.currentQuestion = questionNum
 		// },
 		save: function(){
-			smartQuizService.addQuiz(this.rows)
+			smartQuizService.addQuiz(this.questionObjects)
 			//console.log(this.rows[0])
 		},
 		setAnswer: function(questionIndex, questionKey, answerKey, selected){

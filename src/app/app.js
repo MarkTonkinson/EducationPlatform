@@ -12,6 +12,10 @@ app.config(['$compileProvider', '$routeProvider', function($compileProvider, $ro
     	controller: 'smartQuizCtrl',
     	templateUrl: '../smartQuiz.html'
     })
+    .when('/takeQuiz', {
+        controller: 'takeQuizCtrl',
+        templateUrl: '../views/take-quiz/take-quiz-template.html'
+    })
 
     app.compileProvider = $compileProvider;
 

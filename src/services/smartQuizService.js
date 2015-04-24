@@ -6,7 +6,7 @@ angular.module("EducationPlatform")
 		quizzes.push(quizObj)
 		console.log('quizzes ', quizzes)
 	}
-	this.getQuiz = function(){
+	this.getQuiz = function(teacherName, quizName){
 		return quizzes 	
 	}
 
